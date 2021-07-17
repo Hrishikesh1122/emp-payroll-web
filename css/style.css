@@ -124,3 +124,16 @@ UC3
     border-radius: 50px;
     margin-left: 12px;
 }
+
+/*
+UC4
+*/
+.gender-container>.text {
+    margin-left: 3px;
+    margin-right: 10px;
+}
+
+.department-container>.text {
+    margin-left: 3px;
+    margin-right: 10px;
+}
