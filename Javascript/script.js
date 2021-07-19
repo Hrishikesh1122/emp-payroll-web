@@ -1,3 +1,11 @@
+/*
+Purpose :- Contains all the javascript functons for employee wage page.
+@author :- Hrishikesh
+@Version :- 1.0
+@Since :- 16/07/2021
+*/
+
+//Simple class model for an employee
 class EmployeePayroll{
     get name() {
         return this._name;
@@ -66,6 +74,7 @@ class EmployeePayroll{
     }
 }
 
+//This method displays salary when user selects it from rangebar
 const salary = document.querySelector('#salary')
 const output = document.querySelector('.salary-output')
 output.textContent = salary.value;
@@ -74,8 +83,9 @@ salary.addEventListener('input',function(){
         });
 
 
-
+//On click submit this method creates a Employeepayroll object
 function save(){
+    let empList =[];
     console.log("Hello")
     let name = document.querySelector('#name').value;
     let gender = document.querySelector('input[name=gender]:checked').value;
@@ -99,10 +109,22 @@ function save(){
 
     try{
     let employee = new EmployeePayroll(name,gender,deptArray,salary,startDate,notes)
-    console.log(employee.toString());
+    createLocalStorage(employee);
     }
     catch (E){
         console.error(E)
     }
     
+}
+
+//This method saves employee payroll data as local storage
+function createLocalStorage(employee){
+    let empPayrollLocal = JSON.parse(localStorage.getItem("empListLocal"));
+    if(empPayrollLocal != undefined){
+        empPayrollLocal.push(employee);
+    } else {
+        empPayrollLocal = [employee]
+    }
+    alert(empPayrollLocal.toString());
+    localStorage.setItem("empListLocal",JSON.stringify(empPayrollLocal));
 }
