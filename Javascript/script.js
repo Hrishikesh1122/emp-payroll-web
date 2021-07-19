@@ -1,4 +1,57 @@
 class EmployeePayroll{
+    get name() {
+        return this._name;
+    }
+
+    get gender() {
+        return this._gender;
+    }
+
+    get department() {
+        return this._department;
+    }
+
+    get salary() {
+        return this._salary;
+    }
+
+    get startDate() {
+        return this._startDate;
+    }
+
+    get notes() {
+        return this._notes;
+    }
+
+    set name(value) {
+        let re = new RegExp('[A-Z]+[a-z]{2,}')
+        let match = re.test(value)
+        if(match){this._name=value;}
+        else{alert("Invalid first name , enter again")
+        throw new Error("Invalid first name")
+        }
+    }
+
+    set department(department) {
+        this._department = department;
+    }
+
+    set salary(salary) {
+        this._salary = salary;
+    }
+
+    set gender(gender) {
+        this._gender = gender;
+    }
+
+    set startDate(startDate) {
+          this._startDate = startDate;
+    }
+
+    set notes(notes) {
+          this._notes = notes;
+    }
+
     constructor(...params){
         this.name = params[0];
         this.gender=params[1];
