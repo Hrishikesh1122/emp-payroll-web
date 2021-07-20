@@ -6,46 +6,31 @@ Purpose :- JavaScript functions for home page.
 */
 
 /*
-JSON Object for employees
+UC 6 
+Local storage 
 */
-const createEmployeePayrollJSON = () => {
-    let empPayrollListLocal = [{
-            _name: 'Rohan',
-            _gender: 'male',
-            _department: [
-                'Engineering',
-                'Finance'
-            ],
-            _salary: '50000',
-            _startDate: '29 Oct 2019',
-            _notes: '',
-            _id: new Date().getTime(),
-            _profile: '../assets/profile-images/Ellipse -1.png'
-        },
-        {
-            _name: 'Julia',
-            _gender: 'female',
-            _department: [
-                'Sales',
-            ],
-            _salary: '40000',
-            _startDate: '29 Oct 2019',
-            _notes: '',
-            _id: new Date().getTime(),
-            _profile: '../assets/profile-images/Ellipse -8.png'
-        }
-    ];
-    return empPayrollListLocal;
+let empPayrollList =[];
+window.addEventListener('DOMContentLoaded', (event) => {
+    empPayrollList = getEmpPayrollDataFromstorage();
+   // document.querySelector(".emp-count").textContent = empPayrollList.length;
+    createInnerHtml();
+});
+
+const getEmpPayrollDataFromstorage = () => {
+    return localStorage.getItem('empListLocal') ? JSON.parse(localStorage.getItem('empListLocal')) : [];
 }
 
-
+/*
+This function loads Employee details
+*/
 window.addEventListener('DOMContentLoaded', (event) => {
     createInnerHtml();
 });
+
 const createInnerHtml = () => {
     const headerHtml = "<th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th>";
+    if(empPayrollList.length == 0 ) return;
     let innerHtml = `${headerHtml}`;
-    let empPayrollList = createEmployeePayrollJSON();
     for (const empPayrollData of empPayrollList) {
         innerHtml = `${innerHtml}
         <tr>

@@ -110,6 +110,7 @@ function save(){
     try{
     let employee = new EmployeePayroll(name,gender,deptArray,salary,startDate,notes)
     createLocalStorage(employee);
+    location.href = '../pages/home.html';
     }
     catch (E){
         console.error(E)

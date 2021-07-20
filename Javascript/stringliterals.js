@@ -5,6 +5,7 @@ Note :- This file is currently not in use for home.html as JSON object is used
 @Version :- 1.0
 @Since :- 19/07/2021
 */
+
 window.addEventListener('DOMContentLoaded', (event) => {
     createInnerHtml();
 });
