@@ -31,6 +31,13 @@ class EmployeePayroll{
         return this._notes;
     }
 
+    get id() {
+        return this._id;
+    }
+    set id(id) {
+            this._id = id;
+    }
+
     set name(value) {
         let re = new RegExp('[A-Z]+[a-z]{2,}')
         let match = re.test(value)
@@ -67,6 +74,7 @@ class EmployeePayroll{
         this.salary = params[3];
         this.startDate = params[4];
         this.notes = params[5];     
+        this.id = params[6];
     }
     toString(){
         return ("Name : "+this.name+" Gender : "+this.gender+" Departments : "+this.department+" Salary : "+this.salary+" StartDate : "
@@ -106,9 +114,9 @@ function save(){
         parseInt(parts[0])
     )
     let notes = document.querySelector('#notes').value
-
+    let id = new Date().getTime();
     try{
-    let employee = new EmployeePayroll(name,gender,deptArray,salary,startDate,notes)
+    let employee = new EmployeePayroll(name,gender,deptArray,salary,startDate,notes,id)
     createLocalStorage(employee);
     location.href = '../pages/home.html';
     }
